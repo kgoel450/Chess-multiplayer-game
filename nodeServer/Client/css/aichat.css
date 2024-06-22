@@ -1,0 +1,134 @@
+/* screen configs */
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+  
+  h1 {
+    text-transform: uppercase;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    color: #3c3c3e;
+  }
+  
+  /* chatbox */
+  .chatAi {
+    max-width: 400px;
+    min-height: 400px;
+    max-height : 600px;
+    background-color: #fff; 
+    padding-right: 15px;
+    padding-left: 15px;
+    margin: 20px auto;
+    border-radius: 1rem;
+  }
+
+  .microphone{
+    padding-right : 10px;
+  }
+  
+  /* messages */
+  .messages {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 600px;
+  }
+  
+  .message-list {
+    overflow-y: scroll;
+    max-height: 500px;
+  }
+  
+  .message-item {
+    padding: 20px;
+    border-radius: 0.75rem;
+    margin: 20px 0;
+  }
+  
+  .message-item:last-child {
+    margin-bottom: 0;
+  }
+  
+  .item-primary {
+    background-color: #f6f7f8;
+    color: #3c3c3e;
+    text-align: left;
+  }
+  
+  .item-secondary {
+    background-color: #5ccad7;
+    color: #fff;
+    text-align: center;
+  }
+  
+  /* messages input */
+  .message-input {
+    display: flex;
+    padding: 20px 0;
+  }
+  
+  .message-input input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 2rem;
+    border: 1px solid #a5a5a5;
+  }
+  
+  .message-input button {
+    padding: 10px;
+    margin-left: 10px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+  }
+
+  .popup-aichat {
+
+  }
+  .chatBox{
+    width : 600px;
+    height : 800px;
+    background-color: #f4f4f4;
+    font-family: 'Roboto', sans-serif;
+    margin-left : auto;
+    margin-right: auto;
+    margin-top: 3%;
+    margin-bottom: auto;
+    border-radius: 20px;
+  }
+
+  .chatHeader{
+    display: flex;
+    align-items: center;
+    margin: 10px 0px 20px 40px;
+    padding: 20px 10px 10px 10px;
+    width : 80%;
+  }
+
+  .resetAiChat{
+    margin-left : auto;
+    border : 1px solid black;
+    border-radius : 5px;
+    font-size: 16px;
+    background-color:  #5ccad7;
+    color : white;
+    padding: 5px 10px 5px 10px;
+  }
+
+  .closeAiChat {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    margin-right: 20px;
+  }
+  
+  .closeAiChat:hover,
+  .closeAiChat:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }

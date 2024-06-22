@@ -1,0 +1,4 @@
+.vs
+cppServer/cppServer/x64
+cppServer/x64
+nodeServer/node_modules

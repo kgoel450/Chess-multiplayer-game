@@ -1,0 +1,154 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  height: fit-content;
+  align-items: center;
+  min-height: 100vh;
+  background: url("../images/authBackground.jpg") no-repeat;
+  background-size: 100% 100%;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.hidden {
+  display: none;
+}
+
+.wrapper {
+  width: 90%;
+  max-width: 420px;
+  background: transparent;
+  border: 4px solid rgba(0, 0, 0, 0.2);
+  -webkit-backdrop-filter: blur(90%);
+  backdrop-filter: blur(10px);
+  color: #030303;
+  border-radius: 12px;
+  padding: 30px 40px;
+}
+
+.wrapper h1 {
+  font-family: unbounded;
+  font-size: 40px;
+  font-weight:500;
+  text-align: center;
+}
+
+.wrapper .input-box {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  margin: 30px 0;
+  color: #000000;
+}
+
+.input-box input {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  border: 4px solid rgba(0, 0, 0, 0.2);
+  border-radius: 40px;
+  font-family: "Radio Canada Big";
+  font-size: 16px;
+  color: #000000;
+  padding: 20px 45px 20px 20px;
+}
+
+.input-box i {
+  position: absolute;
+  right: 20px;
+  top: 30%;
+  transform: translate(-50%);
+  font-size: 20px;
+}
+
+.wrapper .btn {
+  width: 100%;
+  height: 45px;
+  background: #fff;
+  border: none;
+  outline: none;
+  border-radius: 40px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+  cursor: pointer;
+  font-family: unbounded;
+  font-size: 16px;
+  color: #333;
+  font-weight: 600;
+}
+
+.wrapper .register-link,
+.wrapper .back-link {
+  font-size: 15px;
+  text-align: center;
+  margin: 20px 0 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#signup-link,
+#login-link {
+  font-family: "Radio Canada Big";
+  color: #020202;
+  text-decoration: none;
+  font-size: 16px;
+  padding-left :10px;
+  font-weight: 700;
+}
+
+#signup-link:hover,
+#login-link:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+
+.messageDiv{
+  background-color:hsl(327,90%,28%);
+  color:white;
+  padding:10px 20px;
+  margin:10px;
+  border-radius: 5px;
+  font-size:1rem;
+  opacity:0;
+  animation:fadeOut 7s forwards;
+
+}
+
+input:focus ~ .floating-label,
+input:not(:focus):valid ~ .floating-label{
+  top: -17px;
+  left: 20px;
+  background: transparent;
+  font-size: 15px;
+  opacity: 1;
+}
+
+.floating-label {
+  color: rgba(0,0,0,0.7);
+  font-size: 16px;
+  font-weight: 700;
+  font-family: "Radio Canada Big";
+  position: absolute;
+  pointer-events: none;
+  left: 20px;
+  top: 14px;
+  transition: 0.2s ease-out all;
+}
+
+
+/* Media Query for smaller screens */
+@media only screen and (max-width: 600px) {
+  .wrapper {
+    padding: 20px;
+  }
+}

@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css?family=Exo:400,700');
+
+body {
+  overflow: hidden;
+  font-family: 'Exo', sans-serif;
+}
+
+.leadCon {
+  color: rgb(0, 0, 0);
+  font-family: sans-serif;
+  font-size: xx-large;
+  margin-bottom: 0;
+  margin-left: 5%;
+}
+
+.tableStat {
+  font-family: sans-serif;
+  margin-left: 20%;
+  width: 60vw;
+}
+
+.tableStat,
+.tableStat .statData {
+  padding: 0.25em 0.5em;
+  text-align: center;
+}
+
+.headerStat {
+  width: fit-content;
+  padding: 0.1em 0.5em;
+  text-align: center;
+}
+
+button.button-win,
+.button-loss,
+.button-draw,
+.button-resign {
+  cursor: auto;
+}
+
+.lead-icon {
+  font-size: 50px;
+}
+
+.tableStat .headerStat:nth-child(2),
+.tableStat .statData:nth-child(2) {
+  text-align: center;
+}
+
+.tableStat .statData {
+  background-color: #000000;
+  border: solid rgba(192, 192, 192, 0.9);
+  border-radius: 50px;
+  box-shadow: 2.5px 2.5px 0px rgba(192, 192, 192, 0.9);
+  color: #ffffff;
+  font-size: medium;
+}
+
+.positiveRatingChangeData {
+  padding: 0.25em 0.5em;
+  text-align: center;
+  background-color: rgba(147, 204, 147, 1);
+  border: solid rgba(192, 192, 192, 0.9);
+  border-radius: 50px;
+  box-shadow: 2.5px 2.5px 0px rgba(192, 192, 192, 0.9);
+  color: #ffffff;
+  font-size: medium;
+}
+
+.positiveRatingChangeData:nth-child(2) {
+  text-align: center;
+}
+
+.negativeRatingChangeData {
+  padding: 0.25em 0.5em;
+  text-align: center;
+  background-color: rgba(228, 96, 96, 1);
+  border: solid rgba(192, 192, 192, 0.9);
+  border-radius: 50px;
+  box-shadow: 2.5px 2.5px 0px rgba(192, 192, 192, 0.9);
+  color: #ffffff;
+  font-size: medium;
+}
+
+.negativeRatingChangeData:nth-child(2) {
+  text-align: center;
+}
+
+.stat {
+  height: 450px;
+  margin-left: -15%;
+  overflow-y: auto;
+  /* Enable vertical scrolling */
+  scrollbar-color: rgb(0,
+      0,
+      0) rgb(255,
+      253,
+      253);
+}
+
+.tableStat .headerStat {
+  background-color: rgb(255, 255, 255);
+  color: #000000;
+  text-align: center;
+  border: solid black;
+  border-radius: 50px;
+  box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.9);
+  font-size: large;
+}
+
+.tableStat {
+  border-collapse: separate;
+  /* spacing between cells */
+  border-spacing: 5em 1em;
+  /* border-spacing: 50px 0; */
+}
+
+.headStat {
+  position: sticky;
+  width: 20px;
+  top: 0;
+  z-index: 3;
+}
+
+.headerStat {
+  width: 180px;
+}

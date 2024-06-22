@@ -1,0 +1,29 @@
+{
+  "name": "chess_socket",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon Server/server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.6.8",
+    "chart.js": "^4.4.3",
+    "convai-web-sdk": "^0.1.1",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "cuid": "^3.0.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "firebase": "^10.11.1",
+    "firebase-admin": "^12.1.0",
+    "simple-notify": "^1.0.4",
+    "socket.io": "^4.7.5"
+  },
+  "description": "",
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}

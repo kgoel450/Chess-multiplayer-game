@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chess Game</title>
+  <link rel="icon" type="image/x-icon" href="../images/Bpawn.png">
+  <link rel="stylesheet" href="../css/navbar.css">
+  <link rel="stylesheet" href="../css/game.css" />
+  <link rel="stylesheet" href="../css/chat.css" />
+  <link rel="stylesheet" href="../css/moveLog.css" />
+  <link rel="stylesheet" href="../css/leaderboard.css">
+  <link rel="stylesheet" href="../css/personal.css">
+  <link rel="stylesheet" href="../css/personalTable.css">
+  <link rel="stylesheet" href="../css/aichat.css">
+  <link rel="stylesheet" href="../css/watch.css">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,600,0,0" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,700,0,200" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Jersey+10+Charted&family=Jersey+15+Charted&family=Jersey+25+Charted&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Righteous&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,500,0,0" />
+  <script src="
+    https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js
+    "></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-notify@1.0.4/dist/simple-notify.css" />
+  <script src="https://cdn.jsdelivr.net/npm/simple-notify@1.0.4/dist/simple-notify.min.js"></script>
+  <script src="https://Conv-AI.github.io/web-sdk-cdn/convai-client.js"></script>
+  <script src = "https://kit.fontawesome.com/51cc5029e0.js" crossorigin = "anonymous"></script>
+</head>
+
+<body>
+
+  <!-- Navigation Bar -->
+
+  <input class="menu-icon" type="checkbox" id="menu-icon" name="menu-icon" />
+  <label for="menu-icon" class="navLabel"></label>
+  <nav class="nav">
+    <ol class="pt-5" class="ulStyle">
+      <li class="listyle">
+        <div onclick="navThemeOption()">Game Theme</div>
+      </li>
+      <li class="listyle">
+        <div onclick="globalLeaderOption()">Global leaderboard</div>
+      </li>
+      <li class="listyle">
+        <div onclick="personalStatOption()">Personal Statistics</div>
+      </li>
+      <li class="listyle">
+        <div id="resetBtn" onclick="restartOption()">Restart Game</div>
+      </li>
+      <li class="listyle">
+        <div onclick="helperOption()">Help Assistant</div>
+      </li>
+      <li class="listyle">
+        <div onclick="signOutHandler()">Logout</div>
+      </li>
+    </ol>
+  </nav>
+
+
+  <!-- Column 1: Room Code & movement Log & undo, redo, resign -->
+
+  <h3>
+    Room Code:
+    <span id="roomCode">
+    </span>
+    <button class="copy-btn" onclick="copyRoomCode()">
+      <span class="material-symbols-outlined">
+        content_copy
+      </span></button>
+  </h3>
+  <div class="move-container">
+    <!-- changes tab to tableMoves -->
+    <table class="tableMoves">
+      <th class="header" style="position: fixed;">
+      <td>Sr.No.</td>
+      <td class="whiteM">White</td>
+      <td class="blackM">Black</td>
+      </th>
+    </table>
+    <button type="button" id="undoBtn" title="Undo">
+      <div class="material-symbols-outlined">
+        undo
+      </div>
+    </button>
+
+    <button type="button" id="redoBtn" title="Redo">
+      <div class="material-symbols-outlined">
+        redo
+      </div>
+    </button>
+
+    <button type="button" id="resignBtn" title="Take an exit/draw">
+      <div class="material-symbols-outlined">
+        exit_to_app
+      </div>
+    </button>
+  </div>
+
+  <!-- Column 2: Chess title & game Board -->
+  <div class="container">
+    <h1> C H E S S </h1>
+
+    <!-- Timer -->
+    <div class="timerContainer"> 
+      <div id="time"> 
+          <span class="digit" id="hr"> 
+              00</span> 
+          <span class="txt">Hr</span> 
+          <span class="digit" id="min"> 
+              00</span> 
+          <span class="txt">Min</span> 
+          <span class="digit" id="sec"> 
+              00</span> 
+          <span class="txt">Sec</span>
+      </div> 
+  </div>
+
+    <ul>
+    </ul>
+  </div>
+
+  <!-- Column 3: Chat Box & Turn Indicator -->
+  <div class="chat-container" style="position:static;">
+
+    <ul class="chat">
+    </ul>
+    <div>
+      <input type="text" class="text_input" placeholder="Message.." />
+      <button id="startButton" class="material-symbols-outlined">mic_off</button>
+    </div>
+  </div>
+  <div class="box-container">
+    <div class="turnTellW">
+      <img class="white_box" src="./images/Wpawn.png">
+    </div>
+    <div class="turnTellB">
+      <img class="black_box" src="./images/Bpawn.png">
+    </div>
+  </div>
+
+  <!-- Modal : Check Mate -->
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Thank you for playing the game</h2>
+      <h2>Check Mate !!</h2>
+      <h1 id="modal-message"></h1>
+    </div>
+  </div>
+
+  <audio id="moveSound" src="audio/move-self.mp3" preload="auto"></audio>
+  <audio id="captureSound" src="audio/capture.mp3" preload="auto"></audio>
+  <audio id="notifySound" src="audio/notify.mp3" preload="auto"></audio>
+
+
+  <!-- Modal : Stale Mate -->
+  <div id="modalStale" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Thank you for playing the game</h2>
+      <h1 id="stale-message"></h1>
+    </div>
+  </div>
+
+  <!-- Popup : Theme Box -->
+  <div id="popup-themes" class="modal">
+    <div class="content1">
+      <span class="close" style="font-size: 50px;">&times;</span>
+      <div id="themes">
+        <label for="theme-select-board">Game Theme:
+          <select id="theme-select-board">
+            <option value="default">Default</option>
+            <option value="dark">Dark</option>
+            <option value="light">Light</option>
+            <option value="red">Red</option>
+            <option value="blue">Blue</option>
+            <option value="green">Green</option>
+            <option value="purple">Purple</option>
+            <option value="magenta">Magenta</option>
+            <option value="orange">Orange</option>
+
+          </select>
+        </label>
+
+      </div>
+      <div>
+        <img class="pBox1" src="../images/Bbishop.png">
+        <img class="pBox2" src="../images/Wbishop.png">
+      </div>
+      <div>
+        <img class="pBox3" src="../images/Wbishop.png">
+        <img class="pBox4" src="../images/Bbishop.png">
+      </div>
+    </div>
+  </div>
+
+  <!-- Popup : Leader board -->
+  <div id="popup-global" class="modal">
+    <div class="content2">
+      <span class="close" style="font-size: 50px;">&times;</span>
+      <p class="leadCon">
+        <span class="material-symbols-outlined lead-icon">
+          social_leaderboard
+        </span>
+        LEADERBOARD
+        <span class="material-symbols-outlined lead-icon">
+          social_leaderboard
+        </span>
+      </p>
+      <div class="leaderBoard">
+        <table class="tableGlobal">
+          <thead class="headGlob">
+            <tr class="trGlobal">
+              <th class="headerGlobal">Rank</th>
+              <th class="headerGlobal">Username</th>
+              <th class="headerGlobal">Elo Rating</th>
+              <th class="headerGlobal">Matches Played</th>
+              <th class="headerGlobal">Total Wins</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
+      <div class="pagination">
+        <span onclick="decrementPage()" class="material-symbols-outlined" id="previousPage">
+          arrow_back_ios
+        </span>
+        <div id="pageNumber">1</div>
+        <span onclick="incrementPage()" class="material-symbols-outlined" id="nextPage">
+          arrow_forward_ios
+        </span>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Popup : Personal Stats -->
+  <div id="popup-personal" class="modal">
+    <div class="content2">
+      <span class="close" style="font-size: 50px;">&times;</span>
+      <div class=userName>
+        <div class="button-username" role="button">
+          <span class="material-symbols-outlined" style="font-size:35px;color:rgb(0, 0, 0);">
+            account_circle
+          </span>
+          <div class="userNameData"></div>
+          <div class="userRatingData"></div>
+        </div>
+      </div>
+      <div class="rowStatGraph">
+        <canvas id="graphColumn"></canvas>
+        <div class="statColumn">
+          <div class="winDraw">
+            <div class=win>
+              <div class="button-win" role="button">
+                <span class="material-symbols-outlined" style="font-size:35px;color:rgb(0, 0, 0);">
+                  military_tech
+                </span>
+                <div class="winText">Wins:</div>
+                <div class="winData">
+                </div>
+              </div>
+            </div>
+            <div class=draw>
+              <div class="button-draw" role="button">
+                <span class="material-symbols-outlined" style="font-size:35px;color:rgb(0, 0, 0);">
+                  balance
+                </span>
+                <div class="drawText">Draws:</div>
+                <div class="drawData"></div>
+              </div>
+            </div>
+          </div>
+          <div class="lossRes">
+            <div class=loss>
+              <div class="button-loss" role="button">
+                <span class="material-symbols-outlined" style="font-size:35px;color:rgb(0, 0, 0);">
+                  thumb_down
+                </span>
+                <div class="lossText">Losses:</div>
+                <div class="lossData"></div>
+              </div>
+            </div>
+            <div class=resign>
+              <div class="button-resign" role="button">
+                <span class="material-symbols-outlined" style="font-size:35px;color:rgb(0, 0, 0);">
+                  handshake
+                </span>
+                <div class="resignText">Resigns:</div>
+                <div class="resignData"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="stat">
+        <table class="tableStat">
+          <thead class="headStat">
+            <tr class="trStat">
+              <th class="headerStat">Match No.</th>
+              <th class="headerStat">Username</th>
+              <th class="headerStat">Game Result</th>
+              <th class="headerStat">Rating Change</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Popup : AI Chat Box -->
+  <div id="popup-aichat" class="modal">
+    <div class = "chatBox">
+      <span class="closeAiChat" style="font-size: 50px;">&times;</span>
+      <div class = "chatHeader">
+        <h2>ConvAI chat</h2>
+        <Button class="resetAiChat" onclick="reset()">Reset</Button>
+      </div>
+      <div class="chatAi">
+        <div class="messages">
+          <div class="message-list">
+            <div class="message-item item-primary">
+              Hi, How Can I help you.
+            </div>
+          </div>
+          <div class="message-input">
+            <div class="microphone">
+              <Button onclick="talky()">
+                <!-- <FontAwesomeIcon icon={this.talkMsg == "Talk" ? faMicrophoneSlash : faMicrophone} />} -->
+                <i class="microphoneSlashed fa-solid fa-microphone-slash"></i>
+                <i class="microphoneOpen fa-solid fa-microphone" style="display: none"></i>
+              </Button>
+            </div>
+            <input placeholder="chat with ai" class="inputAi" onchange="handleMsgChange()" />
+            <div>
+              <Button onclick="sendMsg()">
+                <i class="fa-solid fa-paper-plane"></i>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.min.js"></script>
+  <script type="module" src="../js/game.js"></script>
+  <script src="../js/navbar.js"></script>
+  <script src="../js/sign.js"></script>
+  <script src="../js/utils.js"></script>
+  <script src = "../js/constants.js"></script>
+  <script src = "../js/aichat.js"></script>
+  <script type="module" src="../js/voice.js"></script>
+  <!-- <script type="module" src="../js/graph.js"></script> -->
+</body>
+
+</html>

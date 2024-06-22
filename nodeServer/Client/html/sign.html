@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chess Game - Authentication</title>
+  <link rel="icon" type="image/x-icon" href="../images/Bpawn.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&family=Unbounded:wght@200..900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../css/sign.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-notify@1.0.4/dist/simple-notify.css" />
+  <script src="https://cdn.jsdelivr.net/npm/simple-notify@1.0.4/dist/simple-notify.min.js"></script>
+
+</head>
+
+<body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.min.js"></script>
+  <div class="wrapper">
+    <form id="login-form" action="">
+      <!-- <h1>Login</h1> -->
+      <div class="input-box">
+        <input type="text" id="Email" required>
+        <i class='bx bxs-user'></i>
+        <span class="floating-label">Email Address</span>
+      </div>
+      <div class="input-box">
+        <input type="password" id="Password" required>
+        <i class='bx bxs-lock-alt'></i>
+        <span class="floating-label">Password</span>
+      </div>
+      <button type="button" class="btn" onclick="signInHandler()">LOGIN</button>
+      <div class="register-link">
+        <p>Don't have an account?
+        <p id="signup-link" onclick = "toggleForm()">Register</p>
+        </p>
+      </div>
+    </form>
+    <form id="signup-form" action="" class="hidden">
+      <!-- <h1>Register</h1> -->
+      <div class="input-box">
+        <input type="text" id="rUserName" required>
+        <i class='bx bxs-user'></i>
+        <span class="floating-label">User Name</span>
+      </div>
+      <div class="input-box">
+        <input type="text" id="rEmail" required>
+        <i class='bx bxs-user'></i>
+        <span class="floating-label">Email Address</span>
+      </div>
+      <div class="input-box">
+        <input type="password" id="rPassword" required>
+        <i class='bx bxs-lock-alt'></i>
+        <span class="floating-label">Password</span>
+      </div>
+      <div class="input-box">
+        <input type="password" id="rcPassword" required>
+        <i class='bx bxs-lock-alt'></i>
+        <span class="floating-label">Confirm Password</span>
+      </div>
+      <button type="button" onclick="signUpHandler()" class="btn">Register</button>
+      <div class="back-link">
+        <p>Already have an account?
+        <p id="login-link" onclick="toggleForm()">Back to Login</p>
+        </p>
+      </div>
+    </form>
+  </div>
+  <script src="../js/sign.js"></script>
+  <script src="../js/utils.js"></script>
+</body>
+
+</html>

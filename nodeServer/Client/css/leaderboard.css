@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css?family=Exo:400,700');
+body{
+  overflow: hidden;
+  font-family: 'Exo', sans-serif;
+}
+.leadCon {
+  color: rgb(0, 0, 0);
+  font-family: sans-serif;
+  font-size: xx-large;
+  margin-bottom: 0;
+  margin-left: 5%;
+  margin-top : 6%;
+}
+
+.tableGlobal .headerGlobal, .tableGlobal .globalData {
+  padding: 0.25em 0.5em;
+  text-align: center  ;
+}
+.lead-icon
+{
+  font-size: 50px;
+}
+.tableGlobal .headerGlobal:nth-child(2), .tableGlobal .globalData:nth-child(2) {
+  text-align: center;
+}
+.globalData {
+  background-color: #000000c9;
+  border: solid whitesmoke;
+  border-radius: 50px;
+  box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.9);
+  color: #ffffff;
+  font-size: large;
+}
+.leaderBoard{
+  height: 70%;
+  overflow-y: auto; /* Enable vertical scrolling */
+}
+.headerGlobal {
+  background-color: rgb(139, 172, 87);
+  color: #fff;
+  text-align: center;
+  border: solid black;
+  border-radius: 50px;
+  box-shadow: 5px 5px 0px rgba(92, 92, 92, 0.9);
+  font-size: large;
+  width: fit-content;
+  padding: 0.1em 0.5em;
+  text-align: center;
+}
+.tableGlobal {
+  border-collapse: separate;
+  border-spacing: 5em 1em;
+  font-family: sans-serif;
+  margin-left: 9%;
+  margin-top: 2%;
+  
+}
+
+.headGlob {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+}
+
+.under {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: 0;
+}
+
+.over {
+  position: absolute;
+  left: 80px;
+  top: 10px;
+  z-index: 0;
+}
+/* 
+img{
+  width: 250px;
+  height: 250px;
+} */
+
+
+.over1 {
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  z-index: 0;
+}
+
+.under1 {
+  position: absolute;
+  right: 80px;
+  bottom: 10px;
+  z-index: 0;
+}
+
+#nextPage{
+  border: 4px solid white;
+  font-size: 40px;
+  width: fit-content;
+  height: fit-content;
+  padding: 5px 0px 5px 15px;
+  border-radius: 12px;
+}
+
+#nextPage:hover{
+  cursor: pointer;
+}
+
+.disabled-button{
+  cursor: not-allowed;
+}
+
+#previousPage{
+  border: 4px solid white;
+  font-size: 40px;
+  width: fit-content;
+  height: fit-content;
+  padding: 5px 0px 5px 15px;
+  border-radius: 12px;
+}
+
+#previousPage {
+  cursor: pointer;
+}
+
+#pageNumber {
+  font-size: 40px;
+  margin : 0px 10px 0px 10px;
+}
+
+.pagination {
+  display : flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,0 +1,191 @@
+/*------------------------------ ChatBox----------------------------- */
+
+@import url("https://fonts.googleapis.com/css?family=Lato");
+
+* {
+  box-sizing: border-box;
+}
+
+.chat-container {
+  display: flex;
+  flex-direction: column ;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgb(0, 0, 0);
+  border-width: 2px;
+  /* overflow-x: hidden; */
+  position: fixed;
+  /* width: 400px; */
+  width: 350px;
+  max-width:350px;
+  margin-left: 6%;
+  height: 650px;
+  max-height: 66.5%;
+}
+
+span{
+  height:28px;
+}
+
+.chat {
+  height: 100%;
+  overflow-y: scroll;
+  overflow-x:hidden;
+  display : flex;
+  flex-direction: column-reverse;
+}
+
+.message {
+  background-color: rgb(255, 255, 255);
+  border-radius: 40px;
+  box-shadow: 0px 5px 5px 5px rgba(0, 0, 0, 0.7);
+  position: relative;
+  margin-bottom: 30px;
+  /* width: fit-content; */
+  width: 350px;
+  font-size: x-large;
+  font-family: "Righteous", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.message.left {
+  /* background-color: rgb(0, 0, 0); */
+  width:max-content;
+  height:max-content;
+  justify-content: flex-start;
+  margin-left: 10px;
+  font-size: small;
+}
+
+.message.right {
+  /* background-color: rgb(255, 255, 255); */
+  height: 50px;
+  width:max-content;
+  height: max-content;
+  margin-left: 40%;
+  margin-right: 6%;
+  position: relative;
+  font-size: small;
+  word-wrap: break-word;
+  align-self: self-end;
+}
+
+.message.left p{
+  color:rgb(255, 255, 255);
+
+}
+
+.message p {
+  font-weight: 900;
+  padding: 20px;
+  word-wrap: break-word;
+  max-width: 200px;
+}
+
+.text_input {
+  position : sticky;
+  bottom : 0px;
+  font-size: 13px;
+  /* border-radius: 8px; */
+  padding: 12px 15px 12px 15px;
+  height: 10px;
+  width: 350px;
+  max-width: 307px;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+  
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 2px rgb(0, 0, 0);
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(255, 255, 255);
+  border-radius: 25px;
+}
+
+/* themes defined */
+.default-mode1 {
+  background-color: rgb(0, 0, 0);
+}
+
+.default-mode {
+  background-color: rgb(255, 255, 255);
+}
+
+.light-mode1 {
+  background-color: #bbbbbb;
+}
+
+.light-mode {
+  background-color: #ffffff;
+}
+
+.dark-mode1 {
+  background-color: #000000;
+}
+
+.dark-mode {
+  background-color: #838383;
+}
+
+.red-mode1 {
+  background-color: #b33434;
+}
+
+.red-mode {
+  background-color: #ffffff;
+}
+
+.blue-mode1 {
+  background-color: rgb(68, 107, 151);
+}
+
+.blue-mode {
+  background-color: #85c4f8;
+}
+
+.green-mode1 {
+  background-color: #66805d;
+}
+
+.green-mode {
+  background-color: rgb(174, 216, 111);
+}
+
+.purple-mode1 {
+  background-color: rgb(117, 77, 182);
+}
+
+.purple-mode {
+  background-color: #bfb0e2fa;
+}
+
+.yellow-mode1 {
+  background-color: #fdee00;
+}
+
+.yellow-mode {
+  background-color: #ffffff;
+}
+
+.magenta-mode1 {
+  background-color: #cf3476;
+}
+
+.magenta-mode {
+  background-color: #f49ac2;
+}
+
+.orange-mode1 {
+  background-color: #e4a451;
+}
+
+.orange-mode {
+  background-color: #ffffff;
+}
